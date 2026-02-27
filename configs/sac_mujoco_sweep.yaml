@@ -1,0 +1,38 @@
+# This file captures candidate ablation settings. Use your launcher to materialize runs.
+base_config: configs/sac_mujoco_base.yaml
+
+ablations:
+  - name: auto_alpha_on
+    overrides:
+      sac:
+        auto_alpha: true
+  - name: auto_alpha_off
+    overrides:
+      sac:
+        auto_alpha: false
+  - name: twin_q_on
+    overrides:
+      sac:
+        use_twin_q: true
+  - name: twin_q_off
+    overrides:
+      sac:
+        use_twin_q: false
+  - name: utd_x2
+    overrides:
+      sac:
+        updates_per_step: 2
+  - name: hidden_128
+    overrides:
+      sac:
+        hidden_dims: [128, 128]
+  - name: hidden_512
+    overrides:
+      sac:
+        hidden_dims: [512, 512]
+environments:
+  - HalfCheetah-v4
+  - Hopper-v4
+  - Walker2d-v4
+  - Ant-v4
+seeds: [0, 1, 2, 3, 4]

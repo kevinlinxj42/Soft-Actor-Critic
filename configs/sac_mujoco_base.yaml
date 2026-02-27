@@ -1,0 +1,38 @@
+sac:
+  gamma: 0.99
+  tau: 0.005
+  batch_size: 256
+  replay_size: 1000000
+  actor_lr: 0.0003
+  critic_lr: 0.0003
+  alpha_lr: 0.0003
+  init_alpha: 0.2
+  auto_alpha: true
+  target_entropy: null
+  hidden_dims: [256, 256]
+  warmup_steps: 10000
+  updates_per_step: 1
+  target_update_interval: 1
+  log_std_min: -20.0
+  log_std_max: 2.0
+  use_twin_q: true
+
+env:
+  env_id: HalfCheetah-v4
+  max_episode_steps: null
+  action_clip: true
+  train_seed_offset: 0
+  eval_seed_offset: 10000
+
+train:
+  total_steps: 1000000
+  eval_interval: 5000
+  eval_episodes: 10
+  checkpoint_interval: 50000
+  log_interval: 1000
+  seed_list: [0, 1, 2, 3, 4]
+  device: cuda
+  deterministic_torch: false
+  run_name: sac
+  output_dir: runs
+  save_replay_in_checkpoint: false
